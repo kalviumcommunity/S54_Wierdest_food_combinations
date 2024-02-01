@@ -3,7 +3,7 @@ const app = express()
 const port = process.env.PUBLIC_PORT || 3000 
 
 app.get('/',(req, res)=>{
-  res.send('Weiderest Food Combinations');
+  res.send('Wierdest Food Combinations');
 }
 
 )
