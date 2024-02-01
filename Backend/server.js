@@ -2,14 +2,14 @@ const express = require('express')
 const app = express()
 const port = process.env.PUBLIC_PORT || 3000 
 
-app.get('/ping',(req, res)=>{
-  res.send('pong');
+app.get('/',(req, res)=>{
+  res.send('Weiderest Food Combinations');
 }
 
 )
 if (require.main === module) {
 	app.listen(port, () => {
-		console.log(`🚀 server running on PORT: ${port}`)
+		console.log(`server running on PORT: ${port}`)
 	})
 }
 
