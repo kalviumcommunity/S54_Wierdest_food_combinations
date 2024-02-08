@@ -1,12 +1,16 @@
 const express = require('express')
 const app = express()
-const port = process.env.PUBLIC_PORT || 3000 
+const port =4058
+const connectDB = require('./db')
+
+app.use(express.json())
+
+connectDB()
 
 app.get('/',(req, res)=>{
-  res.send('Wierdest Food Combinations');
-}
+  res.send('Weirdest Food Combinations');
+})
 
-)
 if (require.main === module) {
 	app.listen(port, () => {
 		console.log(`server running on PORT: ${port}`)
@@ -14,3 +18,4 @@ if (require.main === module) {
 }
 
 module.exports = app
+  
