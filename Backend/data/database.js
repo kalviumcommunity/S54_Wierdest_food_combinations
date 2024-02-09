@@ -1,7 +1,6 @@
 const Food = require("./schema.js")
 require("dotenv").config({path:'../.env'})
 
-
 const Food1 = new Food({
     FoodId:"1",
     FoodName:"Chocolte Momos",
@@ -80,7 +79,7 @@ mongoose.connect(process.env.mongoUrl, {
     useUnifiedTopology: true,
 })
 .then(() => console.log('Connected to local MongoDB'))
-.catch(err => console.error('Error connecting to local MongoDB:', err));
+.catch( err => console.error('Error connecting to local MongoDB:', err));
 
 const FoodData = [Food1, Food2, Food3, Food4, Food5, Food6, Food7, Food8, Food9, Food10];
 
