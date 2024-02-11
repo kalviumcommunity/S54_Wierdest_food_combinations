@@ -7,44 +7,19 @@
   text-align: center;
 } 
 
-/* body{
-  background-image: url("https://i.pinimg.com/564x/e9/00/43/e90043c497609dea79523d228ac71aa6.jpg");
+#bodyDiv{
+  background-image: url("./assets/weird_eats_bg.jpg");
   background-repeat: no-repeat;
-  width:100vw;
+  width:100%;
   height: 100vh;
-  background-size: 100%;
-} */
-
-/* navbar  */
-/* .flex{
-  display: flex;
-  align-items: center;
+  background-size: 100% 100%;
 }
 
-.between{
-  justify-content: space-between;
+#categoriesBg{
+  background-image: url("./assets/black_bg.jpg");
+  background-repeat: no-repeat;
+  width:100%;
+  height: 100vh;
+  background-size: 100% 100%;
 }
 
-.search>input{
-  width: 500px;
-  padding: 10px;
-
-}
-
-.options>a{
-  padding: 0 10px;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.options>a:hover{
-  color: #FC7500;
-}
-
-#logoImg{
-  width: 150px;
-  height: 130px;
-} */
-
-/* body, */
