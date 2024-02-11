@@ -46,7 +46,28 @@ const LandingPage = () => {
           <Button backgroundColor="#FA841E" color="white" px="6" fontSize="xl" fontWeight="400" w="180px" h="45px" mt="30px">Explore</Button>
         </Flex>
       </div>
-      
+      <Box id='categoriesBg'>
+      <Heading color="white" p="40px 0">Categories</Heading>
+      <Flex >
+        <Box>
+           <Image src={sweet} alt="" w='300px' h='300px' border='2px solid white'/>
+           <Text color='white' fontSize='20px' pt='30px'>Sweet</Text >
+        </Box>
+        <Box>
+           <Image src={savoury} alt="" w='300px' h='300px' border='2px solid white' />
+           <Text color='white' fontSize='20px' pt='30px'>Sweet and Savoury</Text >
+        </Box>
+        <Box>
+           <Image src={spicy} alt=""  w='300px' h='300px' border='2px solid white'/>
+           <Text color='white' fontSize='20px' pt='30px'>Sweet and Spicy</Text >
+        </Box>
+        <Box>
+           <Image src={tangy} alt="" w='300px' h='300px' border='2px solid white' />
+           <Text color='white' fontSize='20px' pt='30px'>Sweet and Tangy</Text >
+        </Box>
+      </Flex>
+    </Box>
+
       </div>
     </div>
   );
