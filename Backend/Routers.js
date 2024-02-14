@@ -5,7 +5,7 @@ const app = express()
 const router = express.Router()
 require("dotenv").config()
 
-app.use(express.json())
+router.use(express.json())
 
 async function connect(){
     await mongoose.connect(process.env.mongoUrl)
