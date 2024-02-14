@@ -15,6 +15,10 @@ const FoodSchema = new schema({
         type: String,
         required: true 
     },
+  Image:{
+    type:String,
+    required: true
+  },
  Region:{
         type: String,
         required: true 

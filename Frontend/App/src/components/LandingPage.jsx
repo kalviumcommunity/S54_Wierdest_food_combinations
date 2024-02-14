@@ -2,15 +2,11 @@ import React from 'react';
 import { Flex, Input, Link, Image, Button, Box, Heading, Text , InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Logo from '../assets/Food_Eats-removebg-preview.png';
-import sweet from '../assets/chocolate_momo.jpg'
-import spicy from '../assets/Icecream_pani_puri.jpg'
-import savoury from '../assets/Gulab_jamun_chaat.jpg'
-import tangy from '../assets/jalebi_dahi.jpeg'
 
 const LandingPage = () => {
   return (
     <div>
-      <div id='bodyDiv'>
+    <div id='bodyDiv'>
       <div style={{ width: '100vw',padding:"20px"}}>
         <Flex justify="between" align="center">
           <Image src={Logo} alt="" w="36" h="32" py="2" />
@@ -34,40 +30,19 @@ const LandingPage = () => {
           </Flex>
         </Flex>
       </div>
-      <div>
-        <Flex direction="column" height="100vh" m="auto" p='0 130px'>
-          <Heading as="h2" size="xl" text Align="left" mt="8" fontSize="45px"color='white' py="15">Welcome to Weird Eats!</Heading>
-          <Text  text Align="left" mt="4" w="500px" fontSize="23px" color='white' pt="30px" >
+      <div style={{paddingLeft:"100px"}}>
+          <Heading as="h2" size="xl" text Align="left" mt="8" width="650px"fontSize="45px"color='white' py="15">Welcome to Weird Eats!
+          </Heading>
+          <Text  text Align="left" mt="4" w="500px" width="650px"fontSize="23px" color='white' pt="30px" pb="45px" >
             Explore bizarre food combinations that defy expectations. Join us on a
             journey of culinary curiosity, where weird is wonderful and taste knows
             no limits. Let's indulge in the unexpected and redefine what it means
             to savor every bite. Ready to dive in? Let's get weird!
           </Text >
-          <Button backgroundColor="#FA841E" color="white" px="6" fontSize="xl" fontWeight="400" w="180px" h="45px" mt="30px">Explore</Button>
-        </Flex>
+          <Flex justify="flex-start">
+           <Button backgroundColor="#FA841E" color="white" p="6" mb="100px" fontSize="xl" fontWeight="400" w="180px" h="45px" ml="0" >Explore</Button>
+          </Flex>
       </div>
-      <Box id='categoriesBg'>
-      <Heading color="white" p="40px 0">Categories</Heading>
-      <Flex >
-        <Box>
-           <Image src={sweet} alt="" w='300px' h='300px' border='2px solid white'/>
-           <Text color='white' fontSize='20px' pt='30px'>Sweet</Text >
-        </Box>
-        <Box>
-           <Image src={savoury} alt="" w='300px' h='300px' border='2px solid white' />
-           <Text color='white' fontSize='20px' pt='30px'>Sweet and Savoury</Text >
-        </Box>
-        <Box>
-           <Image src={spicy} alt=""  w='300px' h='300px' border='2px solid white'/>
-           <Text color='white' fontSize='20px' pt='30px'>Sweet and Spicy</Text >
-        </Box>
-        <Box>
-           <Image src={tangy} alt="" w='300px' h='300px' border='2px solid white' />
-           <Text color='white' fontSize='20px' pt='30px'>Sweet and Tangy</Text >
-        </Box>
-      </Flex>
-    </Box>
-
       </div>
     </div>
   );
