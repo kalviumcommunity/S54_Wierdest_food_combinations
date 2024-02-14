@@ -16,7 +16,7 @@ async function connectDatabase() {
         console.log('Connected to Database!!!');
     } catch (err) {
         console.error('Error connecting to Database', err);
-        throw err;
+        throw err; // Rethrow the error to be caught in the route handler
     }
 }
 
