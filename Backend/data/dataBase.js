@@ -1,4 +1,4 @@
-const Food = require("./schema.js")
+const Food = require("./Schema.js")
 require("dotenv").config({path:'../.env'})
 const mongoose = require("mongoose");
 

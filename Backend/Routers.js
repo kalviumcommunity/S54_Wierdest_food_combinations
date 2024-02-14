@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const express = require("express")
-const Food  = require("./data/schema")
+const Food  = require("./data/Schema")
 const app = express()
 const router = express.Router()
 require("dotenv").config()
