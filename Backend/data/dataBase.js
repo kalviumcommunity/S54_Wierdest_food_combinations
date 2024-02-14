@@ -66,14 +66,6 @@ const Food8 = new Food({
     Region:"All India"
 })
 
-// const Food9 = new Food({
-//     FoodId:"9",
-//     // Image:"",
-//     FoodName:"Misal Pav with Ice Cream",
-//     FoodCategory:"Sweet & Spicy",
-//     Region:"Maharashtra"
-// })
-
 const Food9 = new Food({
     FoodId:"9",
     Image:"https://encrypted-tbn0.gstatic.com/imagesq=tbn:ANd9GcS4aYyVdTNuD-AxI8j9I9qAIn9VLZjoLfwadu8Vg_t6VwxbwM1u",
