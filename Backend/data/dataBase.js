@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const Food1 = new Food({
     FoodId:"1",
-    Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBF1HHjUUWfVEem32aGxjOiTSW1q9Q8AC0p8j9OIs8qw&s",
+    Image: "https://encrypted-tbn0.gstatic.com/imagesq=tbn:ANd9GcTv6G7PI-MPPWaEEOi0qPXe0y4qWyKosfqvPF8kJx5s5oD05hAS",
     FoodName:"Chocolte Momos",
     FoodCategory:"Sweet",
     Region:"North India"
@@ -44,7 +44,7 @@ const Food5 = new Food({
 
 const Food6 = new Food({
     FoodId:"6",
-    Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz5ZQuoFXRGVnr6U5ImwewcQ4k23WMu_Qq_g&s",
+    Image:"https://encrypted-tbn3.gstatic.com/imagesq=tbn:ANd9GcSjD700emAXshwRb5_ErQjoSFjIluQu4C2tWto_NgXPft2pFvM0",
     FoodName:"Ice Cream Pani Puri",
     FoodCategory:"Sweet & Spicy",
     Region:"All India"
@@ -60,7 +60,7 @@ const Food7 = new Food({
 
 const Food8 = new Food({
     FoodId:"8",
-    Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxErHNAMGP0BmE_SsuQfyRDWCQJNO54fl0Bw&s",
+    Image:"https://encrypted-tbn1.gstatic.com/imagesq=tbn:ANd9GcRILxVCdAz1hQdXxFnwkmwfwGGdF3A6Gb1FEEC9x5GUMkgmIkV_",
     FoodName:"Banana and Chaat Masala",
     FoodCategory:"Sweet & Savory",
     Region:"All India"
@@ -68,7 +68,7 @@ const Food8 = new Food({
 
 const Food9 = new Food({
     FoodId:"9",
-    Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz3XZgBaXUdRhvNSQqwbSFpqI5iR6B95yWwA&s",
+    Image:"https://encrypted-tbn0.gstatic.com/imagesq=tbn:ANd9GcS4aYyVdTNuD-AxI8j9I9qAIn9VLZjoLfwadu8Vg_t6VwxbwM1u",
     FoodName:"Jalebi with Dahi",
     FoodCategory:"Sweet & Tangy",
     Region:"All India"
@@ -102,7 +102,7 @@ mongoose.connect(process.env.mongoUrl)
 .then(() => console.log('Connected to local MongoDB'))
 .catch( err => console.error('Error connecting to local MongoDB:', err));
 
-const FoodData = [Food1, Food2, Food3, Food4, Food5, Food6, Food7, Food8, Food9, Food10, Food11, Food12];
+const FoodData = [Food1, Food2, Food3, Food4, Food5, Food6, Food7, Food8, Food9];
 
 Food.insertMany(FoodData)
 .then(() => console.log('Food added successfully!'))
