@@ -74,10 +74,7 @@ const Food9 = new Food({
     Region:"All India"
 })
 
-mongoose.connect(process.env.mongoUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect(process.env.mongoUrl)
 .then(() => console.log('Connected to local MongoDB'))
 .catch( err => console.error('Error connecting to local MongoDB:', err));
 
