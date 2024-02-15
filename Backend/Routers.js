@@ -5,7 +5,6 @@ const app = express()
 const router = express.Router()
 require("dotenv").config()
 
-
 app.use(express.json())
 
 async function connect(){
@@ -26,8 +25,4 @@ router.get("/", async (req,res) => {
     })
 })
 
-
-
-module.exports= {
-    router
-}
+module.exports= {router}
