@@ -1,11 +1,19 @@
 const mongoose = require("mongoose")
 const express = require("express")
+
 const Food  = require("./data/schema")
+=======
+const Food  = require("./data/Schema")
+
 const app = express()
 const router = express.Router()
 require("dotenv").config()
 
+
 app.use(express.json())
+=======
+router.use(express.json())
+
 
 async function connect(){
     await mongoose.connect(process.env.mongoUrl)
@@ -24,6 +32,7 @@ router.get("/", async (req,res) => {
         res.send(data)
     })
 })
+
 
 // router.post("/", async (req,res) => {
 //     const newdata = new Food(req.body)
@@ -74,3 +83,6 @@ router.get("/", async (req,res) => {
 module.exports= {
     router
 }
+=======
+module.exports= {router}
+
