@@ -31,17 +31,15 @@ const Combinations = () => {
       <Heading p="80px 0" color="white">Combinations</Heading>
       <Grid templateColumns="repeat(3, 1fr)" gap={6}>
         {foodsData.map((food, index) => (
-          <Card key={index} maxW="sm" width={"310px"} mb={30}>
+          <Card key={index} maxW="sm" width={"400px"} mb={30}>
             <CardBody>
-              <Image src={food.Image} alt={food.FoodName} borderRadius="lg" width={"270px"} />
+              <Image src={food.Image} alt={food.FoodName} borderRadius="lg" width={"330px"} height={"300px"} />
               <Stack mt="5" spacing="3">
                 <Heading size="md" textAlign={"center"} color="red">
                   {food.FoodName}
                 </Heading>
-                <Flex justifyContent={"space-between"} color="red">
-                  <Text size="md">{food.FoodCategory}</Text>
-                  <Text fontSize="14px">{food.Region}</Text>
-                </Flex>
+                  <Text  color="red" size="md">{food.FoodCategory}</Text>
+                  <Text  color="red" fontSize="14px">{food.Region}</Text>
               </Stack>
             </CardBody>
           </Card>

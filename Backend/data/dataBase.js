@@ -12,7 +12,7 @@ const Food1 = new Food({
 
 const Food2 = new Food({
     FoodId:"2",
-    Image: "https://encrypted-tbn1.gstatic.comimagesq=tbn:ANd9GcRmyzV0MYE1-8gDf8D3TQ_PxpnmcCldX5W09vWvqQ34MoeSEElH",
+    Image: "https://live.staticflickr.com/7565/15958309016_86fa9d0c39_z.jpg",
     FoodName:"Mango with Chilli Powder",
     FoodCategory:"Sweet & Spicy",
     Region:"All India"
@@ -20,7 +20,7 @@ const Food2 = new Food({
 
 const Food3 = new Food({
     FoodId:"3",
-    Image: "https://encrypted-tbn0.gstatic.com/imagesq=tbn:ANd9GcSSnOhSCxKu4AXTdZF5z7JMwjY_INGOp-wXpwX4WoYbY1OoQ6JI7sZnRgvVeL9uO69ztRs&usqp=CAU",
+    Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK0AaUdPHkaHHW-fHvKLPhcIij2PtLYJ3ybg9zDV1iiVvWY9S1LfT7cYr9UmoFi2QWRgM&usqp=CAU",
     FoodName:"Gulab Jamun Chaat",
     FoodCategory:"Sweet & Savory",
     Region:"North India"
@@ -91,7 +91,7 @@ const Food11 = new Food({
 })
 const Food12 = new Food({
     FoodId:"12",
-    Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz3XZgBaXUdRhvNSQqwbSFpqI5iR6B95yWwA&s",
+    Image:"https://cdn.openart.ai/stable_diffusion/18fbc153cf69bdba7914e07c16c184c69ac12f96_2000x2000.webp",
     FoodName:"Orange Juice and Oreos",
     FoodCategory:"Sweet & Creamy",
     Region:"All India"
