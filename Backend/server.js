@@ -16,7 +16,7 @@ async function connectDatabase() {
         console.log('Connected to Database!!!');
     } catch (err) {
         console.error('Error connecting to Database', err);
-        throw err; // Rethrow the error to be caught in the route handler
+        throw err;
     }
 }
 
@@ -34,11 +34,6 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/foodsData", router);
-
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("Something went wrong!");
-});
 
 app.listen(3000, () => {
     console.log("Running on port 3000");
