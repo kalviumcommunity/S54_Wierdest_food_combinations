@@ -97,6 +97,7 @@ const Food12 = new Food({
     Region:"All India"
 })
 
+
 mongoose.connect(process.env.mongoUrl)
 .then(() => console.log('Connected to local MongoDB'))
 .catch( err => console.error('Error connecting to local MongoDB:', err));
