@@ -5,7 +5,7 @@ const app = express()
 const router = express.Router()
 require("dotenv").config()
 
-router.use(express.json())
+app.use(express.json())
 
 async function connect(){
     await mongoose.connect(process.env.mongoUrl)
@@ -26,3 +26,4 @@ router.get("/", async (req,res) => {
 })
 
 module.exports= {router}
+
