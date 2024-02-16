@@ -8,6 +8,6 @@ const foodSchema = new mongoose.Schema({
     Region: String
 });
 
-const Food = mongoose.model("Food", foodSchema);
+const Food = mongoose.model("foods", foodSchema);
 
 module.exports = Food;
