@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardBody, Stack, Heading, Text, Flex, Grid } from '@chakra-ui/react';
+import { Card, CardBody, Stack, Heading, Text, Flex, Grid, Box } from '@chakra-ui/react';
 
 const Combinations = () => {
   const [foods, setFoods] = useState([]);
@@ -23,12 +23,13 @@ const Combinations = () => {
           <Card key={food.FoodId} width={"400px"} mb={30} id="combinationCard">
             <CardBody>
               <Stack mt="5" spacing="3">
-                <Image src={food.Image} alt={food.FoodName} style={{ borderRadius: '5px', width: '350px', height:'300px'}}></Image>
-                <Heading size="md" textAlign={"center"} color="black">
+                <img src={food.Image} alt={food.FoodName} style={{ borderRadius: '5px', width: '350px', height:'300px'}}/>
+                <Heading size="md" textAlign={"center"} color="red">
                   {food.FoodName}
                 </Heading>  
-                  <Text size="md">{food.FoodCategory}</Text>
-                  <Text fontSize="14px">{food.Region}</Text>
+                <hr/>
+                  <Text size="md" fontWeight="500">Category: {food.FoodCategory}</Text>
+                  <Text fontSize="14px" fontWeight="500">Region: {food.Region}</Text>
               </Stack>
             </CardBody>
           </Card>
