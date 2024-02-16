@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+
+
 *{
   padding: 0;
   margin:auto;
@@ -6,6 +9,7 @@
 #root {
   text-align: center;
  overflow-x: hidden;
+ 
 } 
 
 #bodyDiv{
@@ -16,26 +20,37 @@
   background-size: 100% 100%;
 }
 
-#categoriesBg{
-  background-color: rgb(230, 232, 231);
-  background: linear-gradient(to right, rgb(254, 255, 255),rgb(244, 186, 119));
-  width:100%;
+#categoriesBg {
+  /* background-color: rgb(230, 232, 231); */
+  /* background: linear-gradient(to right, rgb(254, 255, 255), rgb(244, 186, 119)); */
+  /* background: linear-gradient(to right, rgb(25, 26, 28), rgb(29, 29, 31)); */
+  background-image: url(./assets/gradient-white.jpg);
+  width: 100%;
   height: 100vh;
   background-size: 100% 100%;
 }
 
+#categoriesImg:hover{
+  width: 1000px;
+}
 .category {
   position: relative;
   overflow: hidden;
-  border:8px solid rgb(250, 133, 30)  ;
-  border-radius:50%;
+  /* border-radius: 50%; */
+  transition: filter 0.3s;
 }
-.category>img{
+
+.category:hover > img {
   filter: brightness(0.6);
 }
-/* .category:hover>img{
-  filter: brightness(0.9);
-} */
+
+.category:hover .category-text {
+  opacity: 1;
+}
+
+.category > img {
+  border: 6px solid rgb(250, 133, 30);
+}
 
 .category-text {
   position: absolute;
@@ -46,16 +61,29 @@
   padding: 10px;
   font-size: 20px;
   text-align: center;
-
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* .category-text:hover{
-  opacity: 0;
-} */
 
-#combinations{
- background-image: url(./assets/black_bg.jpg);
+#combinationsBg{
+  background-image: url(./assets/gradient-black.jpg);
+ /* background-image: url(./assets/black_bg.jpg); */
  width: 100%;
  height: 100%;
  background-size: 100%;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: black;
+  margin: 10px 0;
+}
+
+hr:before {
+  content: " ";
+  display: block;
+  height: 1.5px;
+  background-color: grey;
 }
