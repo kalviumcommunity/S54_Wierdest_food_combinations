@@ -5,6 +5,7 @@ const { router } = require("./Routers");
 require("dotenv").config();
 
 const app = express();
+app.use(express.json())
 app.use(cors());
 
 async function connectDatabase() {
