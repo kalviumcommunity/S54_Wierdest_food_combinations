@@ -226,7 +226,7 @@ const Combinations = () => {
               </VStack>
               <HStack mt="30px" align="center" justifyContent="center">
                 <Button m="0 10px" colorScheme="blue" onClick={handleAddPost}>
-                  Save
+                  Post
                 </Button>
                 <Button m="0 10px" onClick={handleAddModalClose}>
                   Cancel
