@@ -1,4 +1,3 @@
-// server.jsx
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
@@ -39,8 +38,8 @@ app.get("/", async (req, res) => {
 
 app.use("/foodsData", allCombinations);
 app.use("/post", addCombination);
-app.use("/edit", updateCombination);
-app.use("/delete", deleteCombination);
+app.use("/edit/:id", updateCombination);
+app.use("/delete/:id", deleteCombination);
 
 app.listen(3000, () => {
     console.log("Running on port 3000");

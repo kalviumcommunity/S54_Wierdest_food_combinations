@@ -1,9 +1,28 @@
 import React, { useState, useEffect } from 'react';
-
-import { Card, CardBody, Stack, Heading, Text, Grid, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, VStack, FormControl, FormLabel, Input, Select, HStack, Tooltip } from '@chakra-ui/react';
+import {
+  Card,
+  CardBody,
+  Stack,
+  Heading,
+  Text,
+  Grid,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  VStack,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  HStack,
+  Tooltip,
+} from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import axios from 'axios';
-import { Card, CardBody, Stack, Heading, Text, Flex, Grid, Box } from '@chakra-ui/react';
 
 const Combinations = () => {
   const [foods, setFoods] = useState([]);
@@ -20,6 +39,8 @@ const Combinations = () => {
     FoodCategory: false,
     Region: false,
   });
+  const [isEditMode, setEditMode] = useState(false);
+  const [editFoodId, setEditFoodId] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,14 +66,37 @@ const Combinations = () => {
       FoodCategory: false,
       Region: false,
     });
+    setEditMode(false);
+    setEditFoodId(null);
+  };
+
+  const handleEdit = (food) => {
+    setFormInput({
+      Image: food.Image,
+      FoodName: food.FoodName,
+      FoodCategory: food.FoodCategory,
+      Region: food.Region,
+    });
+    setEditMode(true);
+    setEditFoodId(food._id);
+    setAddModalOpen(true);
+  };
+
+  const handleDelete = async (foodId) => {
+    try {
+      await axios.delete(`https://s54-wierdest-food-combinations.onrender.com/${foodId._id}`);
+      setFoods((prevFoods) => prevFoods.filter((food) => food._id !== foodId._id));
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
   };
 
   const handleAddPost = async () => {
-    const emptyFields = Object.keys(formInput).filter(key => !formInput[key].trim());
+    const emptyFields = Object.keys(formInput).filter((key) => !formInput[key].trim());
 
     if (emptyFields.length > 0) {
       const errors = {};
-      emptyFields.forEach(field => {
+      emptyFields.forEach((field) => {
         errors[field] = true;
       });
       setFormErrors(errors);
@@ -60,32 +104,47 @@ const Combinations = () => {
     }
 
     try {
-      const response = await axios.post('https://s54-wierdest-food-combinations.onrender.com/post', {
-        ...formInput,
-      });
+      if (isEditMode) {
+        await axios.put(`https://s54-wierdest-food-combinations.onrender.com/post/${editFoodId}`, {
+          ...formInput,
+        });
 
-      setFoods([...foods, response.data.createCombination]);
+        setFoods((prevFoods) =>
+          prevFoods.map((food) =>
+            food._id === editFoodId ? { ...food, ...formInput } : food
+          )
+        );
+        setEditMode(false);
+      } else {
+        const response = await axios.post(
+          'https://s54-wierdest-food-combinations.onrender.com/post',
+          { ...formInput }
+        );
+        setFoods([...foods, response.data.createCombination]);
+      }
+
       handleAddModalClose();
     } catch (error) {
-      console.error('Error adding post:', error);
+      console.error('Error adding/editing post:', error);
     }
   };
 
   useEffect(() => {
     fetch('https://s54-wierdest-food-combinations.onrender.com/foodsData')
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setFoods(data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching data:', error);
       });
   }, []);
 
   return (
     <div id="combinationsBg">
-      <Heading p="80px 0" color="white">Combinations</Heading>
-
+      <Heading p="80px 0" color="white">
+        Combinations
+      </Heading>
       <Tooltip label="Add Post" placement="top" fontSize="20px" backgroundColor="white" color="black">
         <Button
           onClick={handleAddModalOpen}
@@ -100,10 +159,9 @@ const Combinations = () => {
           backgroundColor="#FA841E"
           zIndex={999}
         >
-          <AddIcon style={{ paddingTop: "5px" }} />
+          <AddIcon style={{ paddingTop: '5px' }} />
         </Button>
       </Tooltip>
-
       <Modal isOpen={isAddModalOpen} onClose={handleAddModalClose}>
         <ModalOverlay />
         <ModalContent margin="auto">
@@ -114,17 +172,35 @@ const Combinations = () => {
               <VStack spacing={4} align="flex-start">
                 <FormControl>
                   <FormLabel htmlFor="image">Image URL:</FormLabel>
-                  <Input type="text" id="image" name="Image" onChange={handleInputChange} value={formInput.Image} />
+                  <Input
+                    type="text"
+                    id="image"
+                    name="Image"
+                    onChange={handleInputChange}
+                    value={formInput.Image}
+                  />
                   {formErrors.Image && <Text color="red">Please enter the image URL</Text>}
                 </FormControl>
                 <FormControl>
                   <FormLabel htmlFor="foodName">Food Name:</FormLabel>
-                  <Input type="text" id="foodName" name="FoodName" onChange={handleInputChange} value={formInput.FoodName} />
+                  <Input
+                    type="text"
+                    id="foodName"
+                    name="FoodName"
+                    onChange={handleInputChange}
+                    value={formInput.FoodName}
+                  />
                   {formErrors.FoodName && <Text color="red">Please enter the food name</Text>}
                 </FormControl>
                 <FormControl>
                   <FormLabel htmlFor="category">Food Category:</FormLabel>
-                  <Select placeholder="Select category" id="category" name="FoodCategory" onChange={handleInputChange} value={formInput.FoodCategory}>
+                  <Select
+                    placeholder="Select category"
+                    id="category"
+                    name="FoodCategory"
+                    onChange={handleInputChange}
+                    value={formInput.FoodCategory}
+                  >
                     <option value="Sweet">Sweet</option>
                     <option value="Sweet and Savoury">Sweet and Savoury</option>
                     <option value="Sweet and Spicy">Sweet and Spicy</option>
@@ -132,46 +208,74 @@ const Combinations = () => {
                     <option value="Sweet and Creamy">Sweet and Creamy</option>
                     <option value="Sweet and Salty">Sweet and Salty</option>
                   </Select>
-                  {formErrors.FoodCategory && <Text color="red">Please select the food category</Text>}
+                  {formErrors.FoodCategory && (
+                    <Text color="red">Please select the food category</Text>
+                  )}
                 </FormControl>
                 <FormControl>
                   <FormLabel htmlFor="Region">Food Region:</FormLabel>
-                  <Input type="text" id="Region" name="Region" onChange={handleInputChange} value={formInput.Region} />
+                  <Input
+                    type="text"
+                    id="Region"
+                    name="Region"
+                    onChange={handleInputChange}
+                    value={formInput.Region}
+                  />
                   {formErrors.Region && <Text color="red">Please enter the food region</Text>}
                 </FormControl>
               </VStack>
               <HStack mt="30px" align="center" justifyContent="center">
-                <Button m="0 10px" colorScheme='blue' onClick={handleAddPost}>Save</Button>
-                <Button m="0 10px" onClick={handleAddModalClose}>Cancel</Button>
+                <Button m="0 10px" colorScheme="blue" onClick={handleAddPost}>
+                  Save
+                </Button>
+                <Button m="0 10px" onClick={handleAddModalClose}>
+                  Cancel
+                </Button>
               </HStack>
             </form>
           </ModalBody>
         </ModalContent>
       </Modal>
-
+      
+    {foods.length > 0 ? (
+      <>
       <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-        {foods.map(food => (
-          <Card key={food.FoodId} width={"400px"} mb={30} id="combinationCard">
+        {foods.map((food) => (
+          <Card key={food._id} width={'400px'} mb={30} id="combinationCard">
             <CardBody>
               <Stack mt="5" spacing="3">
-                <img src={food.Image} alt={food.FoodName} style={{ borderRadius: '5px', width: '350px', height:'300px'}}/>
-                <Heading size="md" textAlign={"center"} color="red">
+                <img
+                  src={food.Image}
+                  alt={food.FoodName}
+                  style={{ borderRadius: '5px', width: '350px', height: '300px' }}
+                />
+                <Heading size="md" textAlign={'center'} color="red">
                   {food.FoodName}
-                </Heading>  
+                </Heading>
 
                 <hr />
-                <Text size="md" >Category: {food.FoodCategory}</Text>
+                <Text size="md">Category: {food.FoodCategory}</Text>
                 <Text fontSize="14px">Region: {food.Region}</Text>
 
-                <hr/>
-                  <Text size="md" fontWeight="500">Category: {food.FoodCategory}</Text>
-                  <Text fontSize="14px" fontWeight="500">Region: {food.Region}</Text>
-
+                <HStack justifyContent="space-between">
+                  <Button colorScheme="blue" onClick={() => handleEdit(food)}>
+                    Edit
+                  </Button>
+                  <Button colorScheme="red" onClick={() => handleDelete(food)}>
+                    Delete
+                  </Button>
+                </HStack>
               </Stack>
             </CardBody>
           </Card>
         ))}
       </Grid>
+      </>
+      ) : (
+        <Text color="white" height="80vh" fontSize="30px">
+          Ohh no, combination is empty
+        </Text>
+      )}
     </div>
   );
 };
