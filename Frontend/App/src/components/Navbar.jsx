@@ -15,7 +15,6 @@ const Navbar = () => {
           <Button as={Link} to="/" px="6" fontSize="xl" fontWeight="500" color="white" backgroundColor="transparent" _hover={{ backgroundColor: 'transparent', color: 'blue.500' }}>Home</Button>
           <Button as={Link} to="/categories" px="6" fontSize="xl" fontWeight="500" color="white" backgroundColor="transparent" _hover={{ backgroundColor: 'transparent', color: 'blue.500' }}>Categories</Button>
           <Button as={Link} to="/combinations" px="6" fontSize="xl" fontWeight="500" color="white" backgroundColor="transparent" _hover={{ backgroundColor: 'transparent', color: 'blue.500' }}>Combinations</Button>
-          <Button as={Link} to="/post" px="6" fontSize="xl" fontWeight="500" color="white" backgroundColor="transparent" _hover={{ backgroundColor: 'transparent', color: 'blue.500' }}>Posts</Button>
         </Flex>
         <Flex>
           <Button as={Link} to="/login" backgroundColor="#FA841E" color="white" px="6" fontSize="xl" fontWeight="400" variant="solid">Login</Button>
