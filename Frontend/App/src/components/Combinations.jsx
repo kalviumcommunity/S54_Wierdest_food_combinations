@@ -84,7 +84,7 @@ const Combinations = () => {
 
   const handleDelete = async (foodId) => {
     try {
-      await axios.delete(`https://s54-wierdest-food-combinations.onrender.com/${foodId._id}`);
+      await axios.delete(`https://s54-wierdest-food-combinations.onrender.com/delete/${foodId._id}`);
       setFoods((prevFoods) => prevFoods.filter((food) => food._id !== foodId._id));
     } catch (error) {
       console.error('Error deleting post:', error);
