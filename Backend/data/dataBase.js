@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const Food1 = new Food({
     FoodId:"1",
-    Image: "https://encrypted-tbn0.gstatic.com/imagesq=tbn:ANd9GcTv6G7PI-MPPWaEEOi0qPXe0y4qWyKosfqvPF8kJx5s5oD05hAS",
+    Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBWThUfUv7W4qqMlSGy1765pbEYJuwkIWkHw&usqp=CAU",
     FoodName:"Chocolte Momos",
     FoodCategory:"Sweet",
     Region:"North India"
@@ -44,53 +44,37 @@ const Food5 = new Food({
 
 const Food6 = new Food({
     FoodId:"6",
-    Image:"https://encrypted-tbn3.gstatic.com/imagesq=tbn:ANd9GcSjD700emAXshwRb5_ErQjoSFjIluQu4C2tWto_NgXPft2pFvM0",
-    FoodName:"Ice Cream Pani Puri",
-    FoodCategory:"Sweet & Spicy",
-    Region:"All India"
-})
-
-const Food7 = new Food({
-    FoodId:"7",
     Image:"https://5.imimg.com/data5/SELLER/Default/2023/1/UK/CT/SE/184016116/chocolate-samosa-500x500.jpeg",
     FoodName:"Chocolate Samosa",
     FoodCategory:"Sweet",
     Region:"Fusion"
 })
 
-const Food8 = new Food({
-    FoodId:"8",
-    Image:"https://encrypted-tbn1.gstatic.com/imagesq=tbn:ANd9GcRILxVCdAz1hQdXxFnwkmwfwGGdF3A6Gb1FEEC9x5GUMkgmIkV_",
-    FoodName:"Banana and Chaat Masala",
-    FoodCategory:"Sweet & Savory",
-    Region:"All India"
-})
-
-const Food9 = new Food({
-    FoodId:"9",
-    Image:"https://encrypted-tbn0.gstatic.com/imagesq=tbn:ANd9GcS4aYyVdTNuD-AxI8j9I9qAIn9VLZjoLfwadu8Vg_t6VwxbwM1u",
+const Food7 = new Food({
+    FoodId:"7",
+    Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFzK9o5ulkDQPPZHjLoxB0crlgcmYWkaE8Q&usqp=CAU",
     FoodName:"Jalebi with Dahi",
     FoodCategory:"Sweet & Tangy",
     Region:"All India"
 })
 
-const Food10 = new Food({
-    FoodId:"10",
+const Food8 = new Food({
+    FoodId:"8",
     Image:"https://thumbs.dreamstime.com/z/breakfast-cereal-orange-orange-juice-19451107.jpg",
     FoodName:"Cereal and Orange Juice.",
     FoodCategory:"Sweet & Tangy",
     Region:"Global"
 })
 
-const Food11 = new Food({
-    FoodId:"11",
+const Food9 = new Food({
+    FoodId:"9",
     Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXIHkJ7dRSK_pQ7asyKbc2W4-UNPogc3Ji3g&s",
     FoodName:"Coca-Cola and Peanuts.",
     FoodCategory:"Sweet & Salty",
     Region:"Global"
 })
-const Food12 = new Food({
-    FoodId:"12",
+const Food10 = new Food({
+    FoodId:"10",
     Image:"https://cdn.openart.ai/stable_diffusion/18fbc153cf69bdba7914e07c16c184c69ac12f96_2000x2000.webp",
     FoodName:"Orange Juice and Oreos",
     FoodCategory:"Sweet & Creamy",
@@ -102,8 +86,9 @@ mongoose.connect(process.env.mongoUrl)
 .then(() => console.log('Connected to local MongoDB'))
 .catch( err => console.error('Error connecting to local MongoDB:', err));
 
-const FoodData = [Food1, Food2, Food3, Food4, Food5, Food6, Food7, Food8, Food9];
+const FoodData = [Food1, Food2, Food3, Food4, Food5, Food6, Food7, Food8, Food9,Food10];
 
 Food.insertMany(FoodData)
 .then(() => console.log('Food added successfully!'))
 .catch(err => console.error('Error adding Food:', err));
+

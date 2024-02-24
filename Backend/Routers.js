@@ -19,18 +19,13 @@ connect()
     console.log("Error Connecting to Database!!!")
 })
 
-// router.get("/", async (req,res) => {
-//     await Food.find().then((data) => {
-//         returnData = data
-//         res.send(data)
-//     })
-// })
 
-router.get('/',allCombinations)
+
+router.get('/foodsData',allCombinations)
 
 router.get('/:id',getOneCombination)
 
-router.post('/', addCombination)
+router.post('/post', addCombination)
 
 router.put('/:id', updateCombination)
 

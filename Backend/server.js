@@ -1,7 +1,10 @@
+// server.jsx
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
 const { router } = require("./Routers");
+const { addCombination, allCombinations, updateCombination, deleteCombination } = require("./Controller");
+
 require("dotenv").config();
 
 const app = express();
@@ -34,7 +37,10 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.use("/foodsData", router);
+app.use("/foodsData", allCombinations);
+app.use("/post", addCombination);
+app.use("/edit", updateCombination);
+app.use("/delete", deleteCombination);
 
 app.listen(3000, () => {
     console.log("Running on port 3000");
