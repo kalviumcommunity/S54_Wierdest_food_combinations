@@ -23,12 +23,10 @@ const Categories = () => {
   const sliderRef = useRef();
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: true,
     accessibility: true,
     
   };
@@ -49,7 +47,7 @@ const Categories = () => {
         <Slider ref={sliderRef} {...settings}>
           {images.map((image, index) => (
             <div key={index} className="category" style={{ border: '1px solid black', borderRadius: '10px', padding: '10px' }}>
-              <img src={image.src} alt={image.name} style={{ width: '380px', height: '350px', borderRadius: '50%', margin: 'auto' }} />
+              <img id="categoriesImg"src={image.src} alt={image.name} style={{ width: '380px', height: '350px', borderRadius: '50%', margin: 'auto' }} />
               <Flex justifyContent="center">
                 <Box as="span" className="category-text" fontWeight="bold">{image.name}</Box>
               </Flex>

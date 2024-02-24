@@ -30,6 +30,9 @@
   background-size: 100% 100%;
 }
 
+#categoriesImg:hover{
+  width: 1000px;
+}
 .category {
   position: relative;
   overflow: hidden;
@@ -85,4 +88,17 @@
   background-size:100%;
   width: 100vw;
   height: 100vh;  
+}
+hr {
+  border: none;
+  height: 2px;
+  background-color: black;
+  margin: 10px 0;
+}
+
+hr:before {
+  content: " ";
+  display: block;
+  height: 1.5px;
+  background-color: grey;
 }

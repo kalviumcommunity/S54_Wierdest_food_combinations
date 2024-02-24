@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
 import { Card, CardBody, Stack, Heading, Text, Grid, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, VStack, FormControl, FormLabel, Input, Select, HStack, Tooltip } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import axios from 'axios';
+import { Card, CardBody, Stack, Heading, Text, Flex, Grid, Box } from '@chakra-ui/react';
 
 const Combinations = () => {
   const [foods, setFoods] = useState([]);
@@ -156,9 +158,15 @@ const Combinations = () => {
                 <Heading size="md" textAlign={"center"} color="red">
                   {food.FoodName}
                 </Heading>  
+
                 <hr />
                 <Text size="md" >Category: {food.FoodCategory}</Text>
                 <Text fontSize="14px">Region: {food.Region}</Text>
+
+                <hr/>
+                  <Text size="md" fontWeight="500">Category: {food.FoodCategory}</Text>
+                  <Text fontSize="14px" fontWeight="500">Region: {food.Region}</Text>
+
               </Stack>
             </CardBody>
           </Card>

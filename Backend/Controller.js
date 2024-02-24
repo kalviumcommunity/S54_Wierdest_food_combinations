@@ -26,6 +26,14 @@ const getOneCombination = async (req, res) => {
   } catch (error) {
     console.log("error", error);
     res.status(500).json({ message: "Error fetching single combination" });
+    const OneCombination = await schema.findById(req.params.id);
+    if (!OneCombination) {
+      return res.status(404).json({ message: "Combination not found" });
+    }
+    res.status(200).json({ message: `See Combination for ${req.params.id}`, OneCombination });
+  } catch (error) {
+    console.log("error", error);
+    res.status(500).json({ message: "Error fetching single Combination" });
   }
 };
 
@@ -82,6 +90,7 @@ const deleteCombination = async (req, res) => {
     }
     res.status(200).json({
       message: `Deleted combination for ${req.params.id}`,
+      message: `Deleted Combination for ${req.params.id}`,
       deleteIt,
     });
   } catch (error) {
