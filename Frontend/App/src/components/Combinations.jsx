@@ -84,7 +84,7 @@ const Combinations = () => {
 
   const handleDelete = async (foodId) => {
     try {
-      await axios.delete(`https://s54-wierdest-food-combinations.onrender.com/${foodId._id}`);
+      await axios.delete(`https://s54-wierdest-food-combinations.onrender.com/delete/${foodId._id}`);
       setFoods((prevFoods) => prevFoods.filter((food) => food._id !== foodId._id));
     } catch (error) {
       console.error('Error deleting post:', error);
@@ -226,7 +226,7 @@ const Combinations = () => {
               </VStack>
               <HStack mt="30px" align="center" justifyContent="center">
                 <Button m="0 10px" colorScheme="blue" onClick={handleAddPost}>
-                  Save
+                  Post
                 </Button>
                 <Button m="0 10px" onClick={handleAddModalClose}>
                   Cancel
