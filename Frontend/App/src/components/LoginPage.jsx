@@ -1,5 +1,4 @@
-// Login.js
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   Box,
@@ -15,8 +14,9 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { AppContext } from './Context';
 
-const Login = ({ setIsLoggedIn, setFormSubmitted }) => {
+const Login = () => {
   const {
     handleSubmit,
     register,
@@ -24,14 +24,27 @@ const Login = ({ setIsLoggedIn, setFormSubmitted }) => {
     formState: { errors, isSubmitted },
   } = useForm();
   
-  const [formSubmitted, setLocalFormSubmitted] = useState(false);
+  const {isLoggedIn, setIsLoggedIn}=useContext(AppContext);
+  const {formSubmitted, setFormSubmitted} = useContext(AppContext);
+  
+  
+  const setCookie = (name, value, daysToExpire) => {
+    let date = new Date();
+    date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+    const expires = 'expires=' + date.toUTCString();
+    document.cookie = name + '=' + value + ';' + expires + ';path=/';
+  };
 
   const onSubmit = (data) => {
     alert("You have successfully submitted your form");
     setIsLoggedIn(true);
     setFormSubmitted(true);
-    setLocalFormSubmitted(true); 
+    setCookie('username', data.username, 30);
   };
+  
+useEffect(()=>{
+  console.log(formSubmitted)
+},[])
 
   return (
     <Box id='LoginBg'>
@@ -74,6 +87,7 @@ const Login = ({ setIsLoggedIn, setFormSubmitted }) => {
                     })}
                     type="password"
                     variant="filled"
+                    autoComplete='off'
                   />
                   <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
                 </FormControl>
