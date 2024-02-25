@@ -5,7 +5,6 @@ const app = express()
 const router = express.Router()
 require("dotenv").config()
 app.use(express.json())
-
 const { allCombinations, addCombination, getOneCombination, updateCombination,deleteCombination} = require('./Controller')
 
 async function connect(){
@@ -18,8 +17,6 @@ connect()
 }).catch((err) => {
     console.log("Error Connecting to Database!!!")
 })
-
-
 
 router.get('/foodsData',allCombinations)
 

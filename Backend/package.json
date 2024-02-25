@@ -2,7 +2,7 @@
   "name": "s54_wierdest_food_combinations",
   "version": "1.0.0",
   "description": "Welcome to WeirdEats, an entertaining and interactive website dedicated to exploring and celebrating the quirkiest and most unexpected food combinations! This platform caters to adventurous food enthusiasts who relish pushing the boundaries of their taste buds and uncovering unconventional culinary pairings. Users have the opportunity to share, discover, and rate the weirdest food combinations they've come across, fostering a lively community that revels in the diversity of tastes.",
-  "main": "Backened/index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,7 @@
     "dotenv": "^16.4.4",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
+    "joi": "^17.12.2",
     "mongoose": "^8.1.2",
     "nodemon": "^3.0.3"
   }
