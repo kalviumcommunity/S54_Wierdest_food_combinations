@@ -5,6 +5,7 @@ const cors = require("cors");
 app.use(cors());
 const schema = require("./data/Schema");
 
+
 const allCombinations = async (req, res) => {
   try {
     const allCombinationsData = await schema.find({});
