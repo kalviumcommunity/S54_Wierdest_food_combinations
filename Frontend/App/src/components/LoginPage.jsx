@@ -34,17 +34,34 @@ const Login = () => {
     const expires = 'expires=' + date.toUTCString();
     document.cookie = name + '=' + value + ';' + expires + ';path=/';
   };
-
-  const onSubmit = (data) => {
-    alert("You have successfully submitted your form");
-    setIsLoggedIn(true);
-    setFormSubmitted(true);
-    setCookie('username', data.username, 30);
-  };
   
-useEffect(()=>{
-  console.log(formSubmitted)
-},[])
+  useEffect(()=>{
+    console.log(formSubmitted)
+  },[])
+  
+  
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post('http://localhost:3000/auth', {
+        username: data.username,
+        password: data.password,
+      });
+      setIsLoggedIn(true);
+      setFormSubmitted(true);
+      setCookie('username', data.username, 30);
+
+    if (response.status === 200) {
+      alert('You have successfully submitted your form');
+      setIsLoggedIn(true);
+      setFormSubmitted(true);
+      setCookie('username', data.username, 30);
+    } else {
+      console.error('Authentication failed');
+    }
+  } catch (error) {
+    console.error('Error submitting form:', error.message);
+  }
+};
 
   return (
     <Box id='LoginBg'>
