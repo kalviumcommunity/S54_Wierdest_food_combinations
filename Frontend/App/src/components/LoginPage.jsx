@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   Box,
@@ -17,16 +17,10 @@ import { Link } from 'react-router-dom';
 import { AppContext } from './Context';
 
 const Login = () => {
-  const {
-    handleSubmit,
-    register,
-    reset,
-    formState: { errors, isSubmitted },
-  } = useForm();
+  const {handleSubmit,register,reset,formState: { errors, isSubmitted },} = useForm();
   
   const {isLoggedIn, setIsLoggedIn}=useContext(AppContext);
   const {formSubmitted, setFormSubmitted} = useContext(AppContext);
-  
   
   const setCookie = (name, value, daysToExpire) => {
     let date = new Date();
@@ -51,13 +45,17 @@ useEffect(()=>{
       <Flex align="center" justify="between" h="100vh">
        <Image src="https://www.shutterstock.com/image-photo/food-elegant-expensive-dish-plate-600nw-2233658647.jpg" height="100vh" width="70vw"/>
         <Box rounded="md" w="50vw" p="0 100px">
-          <Heading fontWeight="500" fontSize="40px" pb="20px">SIGN UP</Heading>
-          <Text pb="30px">Fill out this form</Text>
           {formSubmitted ? (
+           <Box>
+            <Heading  mb="20px" fontWeight="500" fontSize="40px" pb="20px">You have Successfully logged in</Heading>
             <Button as={Link} to="/" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
               Go back to Home
             </Button>
+           </Box>
           ) : (
+            <Box>
+          <Heading fontWeight="500" fontSize="40px" pb="20px">Login</Heading>
+          <Text pb="30px">Fill out this form</Text>
             <form onSubmit={handleSubmit(onSubmit)} onReset={reset}>
               <VStack spacing={4} align="flex-start">
                 <FormControl isInvalid={errors.name}>
@@ -103,6 +101,7 @@ useEffect(()=>{
                 </Button>
               </VStack>
             </form>
+          </Box>
           )}
         </Box>
       </Flex>
