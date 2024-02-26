@@ -4,7 +4,7 @@ const app = express()
 const router = express.Router()
 require("dotenv").config()
 app.use(express.json())
-const { allCombinations, addCombination, getOneCombination, updateCombination,deleteCombination} = require('./Controller')
+const { getAllUser,getOneUser,addUserData} = require('./UserController')
 
 async function connect(){
     await mongoose.connect(process.env.mongoUrl)
@@ -17,14 +17,9 @@ connect()
     console.log("Error Connecting to Database!!!")
 })
 
-router.get('/foodsData',allCombinations)
+router.get('/userdata',getAllUser)
+router.get('userdata/:id',getOneUser)
+router.post('/auth', addUserData)
 
-router.get('/:id',getOneCombination)
-
-router.post('/post', addCombination)
-
-router.put('/:id', updateCombination)
-
-router.delete('/:id', deleteCombination)
 
 module.exports = {router}
