@@ -23,7 +23,6 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import axios from 'axios';
-
 const Combinations = () => {
   const [foods, setFoods] = useState([]);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
@@ -42,17 +41,14 @@ const Combinations = () => {
   
   const [isEditMode, setEditMode] = useState(false);
   const [editFoodId, setEditFoodId] = useState(null);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormInput({ ...formInput, [name]: value });
     setFormErrors({ ...formErrors, [name]: false });
   };
-
   const handleAddModalOpen = () => {
     setAddModalOpen(true);
   };
-
   const handleAddModalClose = () => {
     setAddModalOpen(false);
     setFormInput({
@@ -70,7 +66,6 @@ const Combinations = () => {
     setEditMode(false);
     setEditFoodId(null);
   };
-
   const handleEdit = (food) => {
     setFormInput({
       Image: food.Image,
@@ -91,10 +86,8 @@ const Combinations = () => {
       console.error('Error deleting post:', error);
     }
   };
-
   const handleAddPost = async () => {
     const emptyFields = Object.keys(formInput).filter((key) => !formInput[key].trim());
-
     if (emptyFields.length > 0) {
       const errors = {};
       emptyFields.forEach((field) => {
@@ -103,13 +96,11 @@ const Combinations = () => {
       setFormErrors(errors);
       return;
     }
-
     try {
       if (isEditMode) {
         await axios.put(`https://s54-wierdest-food-combinations.onrender.com/post/${editFoodId}`, {
           ...formInput,
         });
-
         setFoods((prevFoods) =>
           prevFoods.map((food) =>
             food._id === editFoodId ? { ...food, ...formInput } : food
@@ -123,13 +114,11 @@ const Combinations = () => {
         );
         setFoods([...foods, response.data.createCombination]);
       }
-
       handleAddModalClose();
     } catch (error) {
       console.error('Error adding/editing post:', error);
     }
   };
-
   useEffect(() => {
     fetch('https://s54-wierdest-food-combinations.onrender.com/foodsData')
       .then((response) => response.json())
@@ -140,7 +129,6 @@ const Combinations = () => {
         console.error('Error fetching data:', error);
       });
   }, []);
-
   return (
     <div id="combinationsBg">
       <Heading p="80px 0" color="white">
@@ -253,11 +241,9 @@ const Combinations = () => {
                 <Heading size="md" textAlign={'center'} color="red">
                   {food.FoodName}
                 </Heading>
-
                 <hr />
                 <Text size="md">Category: {food.FoodCategory}</Text>
                 <Text fontSize="14px">Region: {food.Region}</Text>
-
                 <HStack justifyContent="space-between">
                   <Button colorScheme="blue" onClick={() => handleEdit(food)}>
                     Edit
@@ -280,5 +266,4 @@ const Combinations = () => {
     </div>
   );
 };
-
 export default Combinations;
