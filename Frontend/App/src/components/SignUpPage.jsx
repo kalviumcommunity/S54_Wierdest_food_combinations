@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { AppContext } from './Context';
 import cookies from 'js-cookie'
 
-const Login = () => {
+const SignUp = () => {
   const {
     handleSubmit,
     register,
@@ -69,20 +69,19 @@ const Login = () => {
   }, [formSubmitted]);
 
   return (
-    <Box id='LoginBg'>
+    <Box id='SignUpBg'>
       <Flex align="center" justify="between" h="100vh">
-        <Image src="https://www.shutterstock.com/image-photo/food-elegant-expensive-dish-plate-600nw-2233658647.jpg" height="100vh" width="70vw" />
         <Box rounded="md" w="50vw" p="0 100px">
           {formSubmitted ? (
             <Box>
-              <Heading mb="20px" fontWeight="500" fontSize="40px" pb="20px">You have Successfully logged in</Heading>
+              <Heading mb="20px" fontWeight="500" fontSize="40px" pb="20px">You have Successfully Created your Account</Heading>
               <Button as={Link} to="/" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
                 Go back to Home
               </Button>
             </Box>
           ) : (
             <Box>
-              <Heading fontWeight="500" fontSize="40px" pb="20px">Login</Heading>
+              <Heading fontWeight="500" fontSize="40px" pb="20px">SignUp</Heading>
               <Text pb="30px">Fill out this form</Text>
               <form onSubmit={handleSubmit(onSubmit)} onReset={reset}>
                 <VStack spacing={4} align="flex-start">
@@ -120,7 +119,7 @@ const Login = () => {
                     <FormErrorMessage>{errors.Password && errors.Password.message}</FormErrorMessage>
                   </FormControl>
                   <Button type="submit" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
-                    Login
+                    Sign Up
                   </Button>
                   {isSubmitted &&
                     (errors.Name || errors.Username || errors.Email_id || errors.Password) && (
@@ -129,15 +128,19 @@ const Login = () => {
                   <Button type="reset" colorScheme="gray" width="full">
                     Reset
                   </Button>
-                  <Text as={Link} to="/signup" color="black" p="20px 0" _hover={{ color: "blue.500" }}> Not a User? Sign Up</Text>
                 </VStack>
               </form>
             </Box>
           )}
         </Box>
+        <Image
+          src="https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg"
+          height="100vh"
+          width="60vw"
+        />
       </Flex>
     </Box>
   );
 };
 
-export default Login;
+export default SignUp;

@@ -20,6 +20,7 @@ import {
   Select,
   HStack,
   Tooltip,
+  FormErrorIcon,
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import axios from 'axios';
