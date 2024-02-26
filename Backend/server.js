@@ -1,14 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors');
 const { router } = require("./Routers");
 const { addCombination, allCombinations, updateCombination, deleteCombination } = require("./Controller");
+const {getAllUser, getOneUser, addUserData } = require("./UserController");
 const UserValidation= require("./UserValidation")
 const Joi =require('joi')
 require("dotenv").config();
 
 const app = express();
 app.use(express.json())
+
+const cors = require('cors');
 app.use(cors());
 
 const validateCombinationRequest = (req, res, next) => {
@@ -50,6 +52,10 @@ app.use("/foodsData", allCombinations);
 app.use("/post",validateCombinationRequest, addCombination);
 app.use("/edit/:id", validateCombinationRequest,updateCombination);
 app.use("/delete/:id", deleteCombination);
+
+app.use('/userdata',getAllUser)
+app.use('userdata/:id',getOneUser)
+app.use('/auth', addUserData)
 
 app.listen(3000, () => {
     console.log("Running on port 3000");

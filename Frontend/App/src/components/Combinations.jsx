@@ -39,6 +39,7 @@ const Combinations = () => {
     FoodCategory: false,
     Region: false,
   });
+  
   const [isEditMode, setEditMode] = useState(false);
   const [editFoodId, setEditFoodId] = useState(null);
 

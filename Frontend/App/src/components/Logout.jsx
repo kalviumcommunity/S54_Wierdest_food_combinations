@@ -3,18 +3,16 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/Food_Eats-removebg-preview.png';
 import { AppContext } from './Context';
+import cookies from 'js-cookie'
 
 
 const Logout = () => {
-    const deleteCookie = (name) => {
-      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    };
-    
-     const {formSubmitted, setFormSubmitted} = useContext(AppContext);
-
-    const handleLogout = () => {
-        setFormSubmitted(false)
-        deleteCookie('username');
+  
+  const {formSubmitted, setFormSubmitted} = useContext(AppContext);
+  
+   const handleLogout = () => {
+      setFormSubmitted(false)
+      cookies.remove('token')
     };
 
   return (

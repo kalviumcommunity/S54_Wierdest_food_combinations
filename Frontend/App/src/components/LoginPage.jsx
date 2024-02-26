@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import {
   Box,
   Button,
@@ -15,6 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { AppContext } from './Context';
+import cookies from 'js-cookie'
 
 const Login = () => {
   const {
@@ -23,103 +25,112 @@ const Login = () => {
     reset,
     formState: { errors, isSubmitted },
   } = useForm();
+
+  const [data,setData]=useState({
+    Name:'',
+    Username:'',
+    Email_id:'',
+    Password:''
+  })
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+
+  const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+
+  const { formSubmitted, setFormSubmitted } = useContext(AppContext);
+
   
-  const {isLoggedIn, setIsLoggedIn}=useContext(AppContext);
-  const {formSubmitted, setFormSubmitted} = useContext(AppContext);
-  
-  
-  const setCookie = (name, value, daysToExpire) => {
-    let date = new Date();
-    date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
-    const expires = 'expires=' + date.toUTCString();
-    document.cookie = name + '=' + value + ';' + expires + ';path=/';
+  const postUserData = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/auth', data);const token = response.data.token;
+      cookies.set('token', token, { expires: 30 }); 
+    } catch (error) {
+      console.error('Error posting user data:', error);
+    }
   };
   
-  useEffect(()=>{
-    console.log(formSubmitted)
-  },[])
   
-  
-  const onSubmit = async (data) => {
+  const onSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/auth', {
-        username: data.username,
-        password: data.password,
-      });
       setIsLoggedIn(true);
       setFormSubmitted(true);
-      setCookie('username', data.username, 30);
-
-    if (response.status === 200) {
-      alert('You have successfully submitted your form');
-      setIsLoggedIn(true);
-      setFormSubmitted(true);
-      setCookie('username', data.username, 30);
-    } else {
-      console.error('Authentication failed');
+      await postUserData(data);
+    } catch (error) {
+      console.error('Error submitting form:', error);
     }
-  } catch (error) {
-    console.error('Error submitting form:', error.message);
-  }
-};
+
+  };
+  useEffect(() => {
+    console.log(formSubmitted);
+  }, [formSubmitted]);
 
   return (
     <Box id='LoginBg'>
       <Flex align="center" justify="between" h="100vh">
-       <Image src="https://www.shutterstock.com/image-photo/food-elegant-expensive-dish-plate-600nw-2233658647.jpg" height="100vh" width="70vw"/>
+        <Image src="https://www.shutterstock.com/image-photo/food-elegant-expensive-dish-plate-600nw-2233658647.jpg" height="100vh" width="70vw" />
         <Box rounded="md" w="50vw" p="0 100px">
-          <Heading fontWeight="500" fontSize="40px" pb="20px">SIGN UP</Heading>
-          <Text pb="30px">Fill out this form</Text>
           {formSubmitted ? (
-            <Button as={Link} to="/" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
-              Go back to Home
-            </Button>
+            <Box>
+              <Heading mb="20px" fontWeight="500" fontSize="40px" pb="20px">You have Successfully logged in</Heading>
+              <Button as={Link} to="/" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
+                Go back to Home
+              </Button>
+            </Box>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} onReset={reset}>
-              <VStack spacing={4} align="flex-start">
-                <FormControl isInvalid={errors.name}>
-                  <FormLabel htmlFor="name">Name</FormLabel>
-                  <Input {...register("name")} type="text" variant="filled" />
-                  <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={errors.username}>
-                  <FormLabel htmlFor="username">Username</FormLabel>
-                  <Input {...register("username")} type="text" variant="filled" />
-                  <FormErrorMessage>{errors.username && errors.username.message}</FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={errors.email}>
-                  <FormLabel htmlFor="email">Email Address</FormLabel>
-                  <Input {...register("email")} type="email" variant="filled" />
-                  <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={errors.password}>
-                  <FormLabel htmlFor="password">Password</FormLabel>
-                  <Input
-                    {...register("password", {
-                      required: 'Password is required',
-                      minLength: {
-                        value: 6,
-                        message: 'Password must contain at least 6 characters',
-                      },
-                    })}
-                    type="password"
-                    variant="filled"
-                    autoComplete='off'
-                  />
-                  <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
-                </FormControl>
-                <Button type="submit" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
-                  Create Account
-                </Button>
-                {isSubmitted &&
-                  (errors.name || errors.username || errors.email || errors.password) && (
-                    <Box color="red.500">Please fill in all fields.</Box>
-                  )}
-                <Button type="reset" colorScheme="gray" width="full">
-                  Reset
-                </Button>
-              </VStack>
-            </form>
+            <Box>
+              <Heading fontWeight="500" fontSize="40px" pb="20px">Login</Heading>
+              <Text pb="30px">Fill out this form</Text>
+              <form onSubmit={handleSubmit(onSubmit)} onReset={reset}>
+                <VStack spacing={4} align="flex-start">
+                  <FormControl isInvalid={errors.Name}>
+                    <FormLabel htmlFor="Name">Name</FormLabel>
+                    <Input {...register("Name", { required: 'Name is required' })} type="text" onChange={handleInput} value={data.Name} variant="filled" />
+                    <FormErrorMessage>{errors.Name && errors.Name.message}</FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={errors.Username}>
+                    <FormLabel htmlFor="Username">Username</FormLabel>
+                    <Input {...register("Username", { required: 'Username is required' })} type="text" onChange={handleInput} value={data.Username} variant="filled" />
+                    <FormErrorMessage>{errors.Username && errors.Username.message}</FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={errors.Email_id}>
+                    <FormLabel htmlFor="Email_id">Email Id</FormLabel>
+                    <Input {...register("Email_id", { required: 'Email id is required' })} type="email"  onChange={handleInput} value={data.Email_id}variant="filled" />
+                    <FormErrorMessage>{errors.Email_id && errors.Email_id.message}</FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={errors.Password}>
+                    <FormLabel htmlFor="Password">Password</FormLabel>
+                    <Input
+                      {...register("Password", {
+                        required: 'Password is required',
+                        minLength: {
+                          value: 6,
+                          message: 'Password must contain at least 6 characters',
+                        },
+                      })}
+                      type="password"
+                      onChange={handleInput} 
+                      value={data.Password}
+                      variant="filled"
+                      autoComplete='off'
+                    />
+                    <FormErrorMessage>{errors.Password && errors.Password.message}</FormErrorMessage>
+                  </FormControl>
+                  <Button type="submit" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
+                    Login
+                  </Button>
+                  {isSubmitted &&
+                    (errors.Name || errors.Username || errors.Email_id || errors.Password) && (
+                      <Box color="red.500">Please fill in all fields.</Box>
+                    )}
+                  <Button type="reset" colorScheme="gray" width="full">
+                    Reset
+                  </Button>
+                </VStack>
+              </form>
+            </Box>
           )}
         </Box>
       </Flex>
