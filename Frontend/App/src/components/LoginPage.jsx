@@ -45,7 +45,7 @@ const Login = () => {
   
   const postUserData = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/auth', data);const token = response.data.token;
+      const response = await axios.post('https://s54-wierdest-food-combinations.onrender.com/auth', data);const token = response.data.token;
       cookies.set('token', token, { expires: 30 }); 
     } catch (error) {
       console.error('Error posting user data:', error);
