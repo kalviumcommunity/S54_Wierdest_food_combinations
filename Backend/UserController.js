@@ -47,14 +47,14 @@ const addUserData = async (req, res) => {
       Password
     });
 
-    // if (createUserData) {
-    //   const { Username } = createUserData;
-    //   const token = jwt.sign({ username: Username }, process.env.SECRET_KEY);
-    //   console.log(token);
-    //   res.status(201).json({ token }); 
-    // } else {
-    //   res.status(400).json({ message: "Error while creating new user" });
-    // }
+    if (createUserData) {
+      const { Username, Name } = createUserData;
+      const token = jwt.sign({ username: Username }, process.env.SECRET_KEY);
+      console.log(token);
+      res.status(201).json({ token,Name}); 
+    } else {
+      res.status(400).json({ message: "Error while creating new user" });
+    }
 
   } catch (error) {
     console.log("error", error);

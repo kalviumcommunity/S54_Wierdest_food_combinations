@@ -45,8 +45,11 @@ const Login = () => {
   
   const postUserData = async () => {
     try {
-      const response = await axios.post('https://s54-wierdest-food-combinations.onrender.com/auth', data);const token = response.data.token;
+      const response = await axios.post('https://s54-wierdest-food-combinations.onrender.com/auth', data);
+      const {token,Name} = response.data;
+
       cookies.set('token', token, { expires: 30 }); 
+      cookies.set('Name', Name, { expires: 30 }); 
     } catch (error) {
       console.error('Error posting user data:', error);
     }
@@ -88,17 +91,17 @@ const Login = () => {
                 <VStack spacing={4} align="flex-start">
                   <FormControl isInvalid={errors.Name}>
                     <FormLabel htmlFor="Name">Name</FormLabel>
-                    <Input {...register("Name", { required: 'Name is required' })} type="text" onChange={handleInput} value={data.Name} variant="filled" />
+                    <Input {...register("Name", { required: 'Name is required' })} placeholder="Enter your First Name" type="text" onChange={handleInput} value={data.Name} variant="filled" />
                     <FormErrorMessage>{errors.Name && errors.Name.message}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={errors.Username}>
                     <FormLabel htmlFor="Username">Username</FormLabel>
-                    <Input {...register("Username", { required: 'Username is required' })} type="text" onChange={handleInput} value={data.Username} variant="filled" />
+                    <Input {...register("Username", { required: 'Username is required' })} placeholder="Enter your Username" type="text" onChange={handleInput} value={data.Username} variant="filled" />
                     <FormErrorMessage>{errors.Username && errors.Username.message}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={errors.Email_id}>
                     <FormLabel htmlFor="Email_id">Email Id</FormLabel>
-                    <Input {...register("Email_id", { required: 'Email id is required' })} type="email"  onChange={handleInput} value={data.Email_id}variant="filled" />
+                    <Input {...register("Email_id", { required: 'Email id is required' })} placeholder="Enter your Email id" type="email"  onChange={handleInput} value={data.Email_id}variant="filled" />
                     <FormErrorMessage>{errors.Email_id && errors.Email_id.message}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={errors.Password}>
@@ -111,7 +114,7 @@ const Login = () => {
                           message: 'Password must contain at least 6 characters',
                         },
                       })}
-                      type="password"
+                      placeholder="Enter your Password" type="password"
                       onChange={handleInput} 
                       value={data.Password}
                       variant="filled"

@@ -13,7 +13,8 @@ const UserValidation = Joi.object({
       'Sweet and Salty'
     )
     .required(),
-  Region: Joi.string().min(3).max(50).required()
+  Region: Joi.string().min(3).max(50).required(),
+  Created_By: Joi.string().min(3).max(50).required()
 });
 
 module.exports = UserValidation

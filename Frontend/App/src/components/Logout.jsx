@@ -13,6 +13,8 @@ const Logout = () => {
    const handleLogout = () => {
       setFormSubmitted(false)
       cookies.remove('token')
+      cookies.remove('Name')
+
     };
 
   return (

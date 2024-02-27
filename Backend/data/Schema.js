@@ -5,7 +5,8 @@ const foodSchema = new mongoose.Schema({
     Image: String,
     FoodName: String,
     FoodCategory: String,
-    Region: String
+    Region: String,
+    Created_By:String
 });
 
 const Food = mongoose.model("foods", foodSchema);
