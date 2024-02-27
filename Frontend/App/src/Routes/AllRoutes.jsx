@@ -9,6 +9,7 @@ import Categories from '../components/Categories';
 import Combinations from '../components/Combinations';
 import Modal from '../components/Modal';
 import { AppContext } from '../components/Context';
+import SignUp from '../components/SignUpPage';
 
 function AllRoutes() {
   const {isLoggedIn, setIsLoggedIn} = useContext(AppContext);
@@ -23,6 +24,7 @@ function AllRoutes() {
           element={<Login setIsLoggedIn={setIsLoggedIn} setFormSubmitted={setFormSubmitted} />}
         />
         <Route path="/logout" element={<Logout/>}></Route>
+        <Route path="/signup" element={<SignUp/>}></Route>
         <Route
           path="/modal"
           element={

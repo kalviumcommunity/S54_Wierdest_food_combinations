@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { AppContext } from './Context';
 import cookies from 'js-cookie'
 
-const Login = () => {
+const SignUp = () => {
   const {
     handleSubmit,
     register,
@@ -45,11 +45,8 @@ const Login = () => {
   
   const postUserData = async () => {
     try {
-      const response = await axios.post('https://s54-wierdest-food-combinations.onrender.com/auth', data);
-      const {token,Name} = response.data;
-
+      const response = await axios.post('https://s54-wierdest-food-combinations.onrender.com/auth', data);const token = response.data.token;
       cookies.set('token', token, { expires: 30 }); 
-      cookies.set('Name', Name, { expires: 30 }); 
     } catch (error) {
       console.error('Error posting user data:', error);
     }
@@ -72,36 +69,35 @@ const Login = () => {
   }, [formSubmitted]);
 
   return (
-    <Box id='LoginBg'>
+    <Box id='SignUpBg'>
       <Flex align="center" justify="between" h="100vh">
-        <Image src="https://www.shutterstock.com/image-photo/food-elegant-expensive-dish-plate-600nw-2233658647.jpg" height="100vh" width="70vw" />
         <Box rounded="md" w="50vw" p="0 100px">
           {formSubmitted ? (
             <Box>
-              <Heading mb="20px" fontWeight="500" fontSize="40px" pb="20px">You have Successfully logged in</Heading>
+              <Heading mb="20px" fontWeight="500" fontSize="40px" pb="20px">You have Successfully Created your Account</Heading>
               <Button as={Link} to="/" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
                 Go back to Home
               </Button>
             </Box>
           ) : (
             <Box>
-              <Heading fontWeight="500" fontSize="40px" pb="20px">Login</Heading>
+              <Heading fontWeight="500" fontSize="40px" pb="20px">SignUp</Heading>
               <Text pb="30px">Fill out this form</Text>
               <form onSubmit={handleSubmit(onSubmit)} onReset={reset}>
                 <VStack spacing={4} align="flex-start">
                   <FormControl isInvalid={errors.Name}>
                     <FormLabel htmlFor="Name">Name</FormLabel>
-                    <Input {...register("Name", { required: 'Name is required' })} placeholder="Enter your First Name" type="text" onChange={handleInput} value={data.Name} variant="filled" />
+                    <Input {...register("Name", { required: 'Name is required' })} type="text" onChange={handleInput} value={data.Name} variant="filled" />
                     <FormErrorMessage>{errors.Name && errors.Name.message}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={errors.Username}>
                     <FormLabel htmlFor="Username">Username</FormLabel>
-                    <Input {...register("Username", { required: 'Username is required' })} placeholder="Enter your Username" type="text" onChange={handleInput} value={data.Username} variant="filled" />
+                    <Input {...register("Username", { required: 'Username is required' })} type="text" onChange={handleInput} value={data.Username} variant="filled" />
                     <FormErrorMessage>{errors.Username && errors.Username.message}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={errors.Email_id}>
                     <FormLabel htmlFor="Email_id">Email Id</FormLabel>
-                    <Input {...register("Email_id", { required: 'Email id is required' })} placeholder="Enter your Email id" type="email"  onChange={handleInput} value={data.Email_id}variant="filled" />
+                    <Input {...register("Email_id", { required: 'Email id is required' })} type="email"  onChange={handleInput} value={data.Email_id}variant="filled" />
                     <FormErrorMessage>{errors.Email_id && errors.Email_id.message}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={errors.Password}>
@@ -114,7 +110,7 @@ const Login = () => {
                           message: 'Password must contain at least 6 characters',
                         },
                       })}
-                      placeholder="Enter your Password" type="password"
+                      type="password"
                       onChange={handleInput} 
                       value={data.Password}
                       variant="filled"
@@ -123,7 +119,7 @@ const Login = () => {
                     <FormErrorMessage>{errors.Password && errors.Password.message}</FormErrorMessage>
                   </FormControl>
                   <Button type="submit" backgroundColor="rgb(168, 41, 43)" color="white" width="full">
-                    Login
+                    Sign Up
                   </Button>
                   {isSubmitted &&
                     (errors.Name || errors.Username || errors.Email_id || errors.Password) && (
@@ -132,15 +128,19 @@ const Login = () => {
                   <Button type="reset" colorScheme="gray" width="full">
                     Reset
                   </Button>
-                  <Text as={Link} to="/signup" color="black" p="20px 0" _hover={{ color: "blue.500" }}> Not a User? Sign Up</Text>
                 </VStack>
               </form>
             </Box>
           )}
         </Box>
+        <Image
+          src="https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg"
+          height="100vh"
+          width="60vw"
+        />
       </Flex>
     </Box>
   );
 };
 
-export default Login;
+export default SignUp;

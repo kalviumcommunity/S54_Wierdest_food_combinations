@@ -48,10 +48,10 @@ const addUserData = async (req, res) => {
     });
 
     if (createUserData) {
-      const { Username } = createUserData;
+      const { Username, Name } = createUserData;
       const token = jwt.sign({ username: Username }, process.env.SECRET_KEY);
       console.log(token);
-      res.status(201).json({ token }); 
+      res.status(201).json({ token,Name}); 
     } else {
       res.status(400).json({ message: "Error while creating new user" });
     }

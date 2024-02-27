@@ -7,7 +7,8 @@ const Food1 = new Food({
     Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBWThUfUv7W4qqMlSGy1765pbEYJuwkIWkHw&usqp=CAU",
     FoodName:"Chocolte Momos",
     FoodCategory:"Sweet",
-    Region:"North India"
+    Region:"North India",
+    Created_By:"Rajashree"
 })
 
 const Food2 = new Food({
@@ -15,7 +16,8 @@ const Food2 = new Food({
     Image: "https://live.staticflickr.com/7565/15958309016_86fa9d0c39_z.jpg",
     FoodName:"Mango with Chilli Powder",
     FoodCategory:"Sweet & Spicy",
-    Region:"All India"
+    Region:"All India",
+    Created_By:"Rajashree"
 })
 
 const Food3 = new Food({
@@ -23,7 +25,8 @@ const Food3 = new Food({
     Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK0AaUdPHkaHHW-fHvKLPhcIij2PtLYJ3ybg9zDV1iiVvWY9S1LfT7cYr9UmoFi2QWRgM&usqp=CAU",
     FoodName:"Gulab Jamun Chaat",
     FoodCategory:"Sweet & Savory",
-    Region:"North India"
+    Region:"North India",
+    Created_By:"Rajashree"
 })
 
 const Food4 = new Food({
@@ -39,7 +42,8 @@ const Food5 = new Food({
    Image:"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRSaD50I8bE8ZbALRZN3bxf-78ZQcVsgCenvb1UUY5GwQwqKhiz",
    FoodName:"Oreo Pakoda",
    FoodCategory:"Sweet",
-   Region:"Fusion"
+   Region:"Fusion",
+Created_By:"Rajashree"
 })
 
 const Food6 = new Food({
@@ -47,7 +51,8 @@ const Food6 = new Food({
     Image:"https://5.imimg.com/data5/SELLER/Default/2023/1/UK/CT/SE/184016116/chocolate-samosa-500x500.jpeg",
     FoodName:"Chocolate Samosa",
     FoodCategory:"Sweet",
-    Region:"Fusion"
+    Region:"Fusion",
+    Created_By:"Rajashree"
 })
 
 const Food7 = new Food({
@@ -55,7 +60,8 @@ const Food7 = new Food({
     Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFzK9o5ulkDQPPZHjLoxB0crlgcmYWkaE8Q&usqp=CAU",
     FoodName:"Jalebi with Dahi",
     FoodCategory:"Sweet & Tangy",
-    Region:"All India"
+    Region:"All India",
+    Created_By:"Rajashree"
 })
 
 const Food8 = new Food({
@@ -63,7 +69,8 @@ const Food8 = new Food({
     Image:"https://thumbs.dreamstime.com/z/breakfast-cereal-orange-orange-juice-19451107.jpg",
     FoodName:"Cereal and Orange Juice.",
     FoodCategory:"Sweet & Tangy",
-    Region:"Global"
+    Region:"Global",
+    Created_By:"Rajashree"
 })
 
 const Food9 = new Food({
@@ -71,14 +78,16 @@ const Food9 = new Food({
     Image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXIHkJ7dRSK_pQ7asyKbc2W4-UNPogc3Ji3g&s",
     FoodName:"Coca-Cola and Peanuts.",
     FoodCategory:"Sweet & Salty",
-    Region:"Global"
+    Region:"Global",
+    Created_By:"Rajashree"
 })
 const Food10 = new Food({
     FoodId:"10",
     Image:"https://cdn.openart.ai/stable_diffusion/18fbc153cf69bdba7914e07c16c184c69ac12f96_2000x2000.webp",
     FoodName:"Orange Juice and Oreos",
     FoodCategory:"Sweet & Creamy",
-    Region:"All India"
+    Region:"All India",
+    Created_By:"Rajashree"
 })
 
 

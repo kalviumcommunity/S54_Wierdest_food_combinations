@@ -32,7 +32,7 @@ const getOneCombination = async (req, res) => {
 const addCombination = async (req, res) => {
   try {
     const body = req.body;
-    const { id, Image, FoodName, FoodCategory, Region } = body;
+    const { id, Image, FoodName, FoodCategory, Region, Created_By } = body;
 
     if (!FoodName || !FoodCategory || !Region || !Image) {
       res.status(400).json({ error: "Enter all fields" });
@@ -44,7 +44,8 @@ const addCombination = async (req, res) => {
       Image,
       FoodName,
       FoodCategory,
-      Region
+      Region,
+      Created_By
     });
 
     res.status(201).json({ message: "Combination created", createCombination });
